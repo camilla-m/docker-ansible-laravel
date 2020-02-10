@@ -25,7 +25,7 @@ pipeline {
                 sh 'ansible-playbook Playbook.yml'
             }
         }
-        stage('Notification') {
+        stage('End Notification') {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'SLACK_NOTIFICATION_FRANGO_VELOZ', variable: 'SLACK_NOTIFICATION_FRANGO_VELOZ')]) {
