@@ -10,7 +10,7 @@
     # - name: Build Aplication
     #   shell: "docker build -t mauriciopgomes/frango_frito ."
 
-    #Enviando para o Registry (Docker-hub) usando o Ansible
+    # Enviando para o Registry (Docker-hub) usando o Ansible
     # - name: Push to Registry 
     #   shell: "docker push mauriciopgomes/frango_frito:latest"
 
