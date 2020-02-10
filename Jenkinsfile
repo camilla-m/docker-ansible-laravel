@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Notification') {
+        stage('Start Notification') {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'SLACK_NOTIFICATION_FRANGO_VELOZ', variable: 'SLACK_NOTIFICATION_FRANGO_VELOZ')]) {

@@ -29,7 +29,7 @@
         published_ports:
           - 80:80
 
-    - name: Aguardando a Aplicação subir
+    - name: Waiting Aplication Starting Up
       uri:
         url: "http://localhost"
         follow_redirects: none
