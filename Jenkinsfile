@@ -8,12 +8,12 @@ pipeline {
         }
         stage('Build Aplication') {
             steps {
-                sh 'docker build -t mauriciopgomes/frago_frito .'
+                sh 'docker build -t mauriciopgomes/frango_frito .'
             }
         }
         stage('Push to Registry (Docker-HUB)') {
             steps {
-                sh 'docker push mauriciopgomes/frago_frito:latest'
+                sh 'docker push mauriciopgomes/frango_frito:latest'
             }
         }
         stage('Run Ansible Playbook') {
