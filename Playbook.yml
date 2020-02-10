@@ -32,3 +32,13 @@
     #Iniciando a nova versão da aplicação
     - name: Start Application 
       shell: "docker run -p 80:80 -d --name frango_veloz mauriciopgomes/frago_frito:latest"
+
+    - name: Pause play until a URL is reachable from this host
+      uri:
+        url: "http://localhost"
+        follow_redirects: none
+        method: GET
+      register: _result
+      until: _result.status == 200
+      retries: 720 # 720 * 5 seconds = 1hour (60*60/5)
+      delay: 5 # Every 5 seconds
