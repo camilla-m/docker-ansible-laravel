@@ -1,0 +1,34 @@
+---
+- name: "Ansible Playbook"
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  tasks:
+
+    # Build usando o ansible
+    # - name: Build Aplication
+    #   shell: "docker build -t mauriciopgomes/frago_frito ."
+
+    #Enviando para o Registry (Docker-hub) usando o Ansible
+    # - name: Push to Registry 
+    #   shell: "docker push mauriciopgomes/frago_frito:latest"
+
+    #Fazendo o Pull na maquina de destino
+    - name: Docker Pull Application
+      shell: "docker pull mauriciopgomes/frago_frito:latest"
+
+    #Checando se a aplicação esta rodando
+    - name: Check Application is Running
+      docker_container_info:
+        name: frango_veloz
+      register: result
+
+    #Parando a aplicação caso esteja rodando
+    - name: Stop Application
+      shell: "docker rm -f frango_veloz"
+      when: result.exists
+
+    #Iniciando a nova versão da aplicação
+    - name: Start Application 
+      shell: "docker run -p 80:80 -d --name frango_veloz mauriciopgomes/frago_frito:latest"
