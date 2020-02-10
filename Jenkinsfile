@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'SLACK_NOTIFICATION_FRANGO_VELOZ', variable: 'SLACK_NOTIFICATION_FRANGO_VELOZ')]) {
-                        sh 'curl -X POST -H \'Content-type: application/json\' --data \'{"text":":poultry_leg: Build Frango Frito Iniciado :tada: :tada: :tada:"}\' ${SLACK_NOTIFICATION_FRANGO_VELOZ}'
+                        sh 'curl -X POST -H \'Content-type: application/json\' --data \'{"text":":poultry_leg: Build Frango Frito Iniciado"}\' ${SLACK_NOTIFICATION_FRANGO_VELOZ}'
                     }
                 }
             }
