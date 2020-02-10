@@ -8,23 +8,23 @@
 
     # Build usando o ansible
     # - name: Build Aplication
-    #   shell: "docker build -t mauriciopgomes/frago_frito ."
+    #   shell: "docker build -t mauriciopgomes/frango_frito ."
 
     #Enviando para o Registry (Docker-hub) usando o Ansible
     # - name: Push to Registry 
-    #   shell: "docker push mauriciopgomes/frago_frito:latest"
+    #   shell: "docker push mauriciopgomes/frango_frito:latest"
 
     #Fazendo o Pull na maquina de destino
     - name: Docker Pull Application
       docker_image:
-        name: mauriciopgomes/frago_frito:latest
+        name: mauriciopgomes/frango_frito:latest
         source: pull
 
     #Iniciando a nova versão da aplicação
     - name: Start Application 
       docker_container:
         name: frango_veloz
-        image: mauriciopgomes/frago_frito:latest
+        image: mauriciopgomes/frango_frito:latest
         recreate: yes
         published_ports:
           - 80:80
