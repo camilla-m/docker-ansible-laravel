@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Notification') {
             steps {
-                sh 'curl -X POST -H \'Content-type: application/json\' --data \'{"text":":poultry_leg: Build Frango Frito Iniciado :tada: :tada: :tada:"}\' https://hooks.slack.com/services/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'
+                sh 'curl -X POST -H \'Content-type: application/json\' --data \'{"text":":poultry_leg: Build Frango Frito Iniciado :tada: :tada: :tada:"}\' https://hooks.slack.com/services/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'
             }
         }
         stage('Build Aplication') {
