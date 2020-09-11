@@ -1,8 +1,6 @@
 ---
 - name: "Ansible Docker"
   hosts: localhost
-  become: yes
-  become_user: root
   connection: local
   gather_facts: no
 
@@ -21,16 +19,12 @@
 
   - name: Docker Pip
     shell: pip install docker
-    become: yes
-    become_user: ec2-user
 
     #Fazendo o Pull na maquina de destino
   - name: Docker Pull Application
     docker_image:
       name: ewertonely/laravel-blog:latest
       source: pull
-    become: yes
-    become_user: ec2-user
 
     #Iniciando a nova versão da aplicação
   - name: Start Application 
