@@ -9,7 +9,7 @@
       key_name: camidevops
       region: sa-east-1
       instance_type: t2.micro
-      image: ami-026dea5602e368e96
+      image: ami-013dd6e24f90aa93f
       wait: yes
       count: 1
       group: default
