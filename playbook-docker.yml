@@ -1,38 +1,33 @@
 ---
 - name: "Ansible Docker"
   hosts: localhost
+  become: yes
+  become_user: root
   connection: local
   gather_facts: no
 
   tasks:
   - name: Add extras repository
     shell: yum-config-manager --enable extras
-    become: yes
-    become_user: root
 
   - name: Install docker-ce (centos) via amazon-linux-extras packages
     shell: "amazon-linux-extras install docker=18.06.1 -y"
-    become: yes
-    become_user: root
 
   - name: Enable Docker CE service at startup
     service:
       name: docker
       state: started
       enabled: yes
-    become: yes
-    become_user: root
 
   - name: Docker Pip
     shell: pip install docker
+
 
     #Fazendo o Pull na maquina de destino
   - name: Docker Pull Application
     docker_image:
       name: ewertonely/laravel-blog:latest
       source: pull
-    become: yes
-    become_user: root
 
     #Iniciando a nova versão da aplicação
   - name: Start Application 
@@ -42,8 +37,6 @@
       recreate: yes
       published_ports:
         - 80:80
-    become: yes
-    become_user: root
 
   - name: Waiting Aplication Starting Up
     uri:
