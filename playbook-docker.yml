@@ -1,7 +1,8 @@
 ---
-- hosts: "{{nameinvault}}"
-  become: yes
-  remote_user: ec2-user
+- name: "Ansible Docker"
+  hosts: localhost
+  connection: local
+  gather_facts: no
 
   tasks:
   - name: Install aptitude using apt
