@@ -7,7 +7,7 @@
   tasks:
   - ec2:
       key_name: camidevops
-      region: us-east-2
+      region: sa-east-1
       instance_type: t2.micro
       image: ami-026dea5602e368e96
       wait: yes
@@ -38,7 +38,7 @@
       description: default VPC security group
       vpc_id: vpc-fdfded9a
       profile: "default"
-      region: us-east-2
+      region: sa-east-1
       purge_rules: no
       rules:
         - proto: tcp
