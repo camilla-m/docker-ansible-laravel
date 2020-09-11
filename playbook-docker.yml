@@ -7,9 +7,13 @@
   tasks:
   - name: Add extras repository
     shell: yum-config-manager --enable extras
+    become: yes
+    become_user: root
 
   - name: Install docker-ce (centos) via amazon-linux-extras packages
     shell: "amazon-linux-extras install docker=18.06.1 -y"
+    become: yes
+    become_user: root
 
   - name: Enable Docker CE service at startup
     service:
