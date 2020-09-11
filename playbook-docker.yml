@@ -31,6 +31,8 @@
     docker_image:
       name: ewertonely/laravel-blog:latest
       source: pull
+    become: yes
+    become_user: root
 
     #Iniciando a nova versão da aplicação
   - name: Start Application 
@@ -40,6 +42,8 @@
       recreate: yes
       published_ports:
         - 80:80
+    become: yes
+    become_user: root
 
   - name: Waiting Aplication Starting Up
     uri:
