@@ -29,6 +29,8 @@
     docker_image:
       name: ewertonely/laravel-blog:latest
       source: pull
+    become: yes
+    become_user: ec2-user
 
     #Iniciando a nova versão da aplicação
   - name: Start Application 
