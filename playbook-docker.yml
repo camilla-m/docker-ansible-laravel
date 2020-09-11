@@ -20,6 +20,8 @@
       name: docker
       state: started
       enabled: yes
+    become: yes
+    become_user: root
 
     #Fazendo o Pull na maquina de destino
   - name: Docker Pull Application
