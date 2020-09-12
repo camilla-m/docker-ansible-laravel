@@ -31,20 +31,23 @@
     become: yes
     become_user: root
 
-    #Fazendo o Pull na maquina de destino
-  - name: Docker Pull Application
-    docker_image:
-      name: ewertonely/laravel-blog:latest
-      source: pull
+  - name: Install pip
+    shell: "docker run -d -p 80:80 --name laravelcami ewertonely/laravel-blog:latest"
 
-    #Iniciando a nova versão da aplicação
-  - name: Start Application 
-    docker_container:
-      name: laravelcami
-      image: ewertonely/laravel-blog:latest
-      recreate: yes
-      published_ports:
-        - 80:80
+  #   #Fazendo o Pull na maquina de destino
+  # - name: Docker Pull Application
+  #   docker_image:
+  #     name: ewertonely/laravel-blog:latest
+  #     source: pull
+
+  #   #Iniciando a nova versão da aplicação
+  # - name: Start Application 
+  #   docker_container:
+  #     name: laravelcami
+  #     image: ewertonely/laravel-blog:latest
+  #     recreate: yes
+  #     published_ports:
+  #       - 80:80
 
   - name: Waiting Aplication Starting Up
     uri:
