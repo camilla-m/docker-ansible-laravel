@@ -17,6 +17,12 @@
       state: started
       enabled: yes
 
+  - name: Download pip
+    shell: "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py"
+
+  - name: Install pip
+    shell: "python get-pip.py"
+
   - name: Docker Pip
     shell: pip install docker
 
