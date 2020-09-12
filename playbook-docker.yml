@@ -27,7 +27,8 @@
 
   - name: Docker Pip
     shell: pip install docker
-
+    ignore_errors: True
+    
     #Fazendo o Pull na maquina de destino
   - name: Docker Pull Application
     docker_image:
