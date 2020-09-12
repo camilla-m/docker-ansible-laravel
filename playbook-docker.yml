@@ -31,11 +31,6 @@
     become: yes
     become_user: root
 
-  - name: Docker Pip
-    shell: pip install docker
-    become: yes
-    become_user: root
-
     #Fazendo o Pull na maquina de destino
   - name: Docker Pull Application
     docker_image:
