@@ -2,35 +2,47 @@
 - name: "Ansible Docker"
   hosts: "{{nameinvault}}"
   become: yes
-  remote_user: root
+  remote_user: ec2-user
 
   tasks:
   - name: Add extras repository
     shell: yum-config-manager --enable extras
+    become: yes
+    remote_user: root
 
   - name: Install docker-ce (centos) via amazon-linux-extras packages
     shell: "amazon-linux-extras install docker=18.06.1 -y"
+    become: yes
+    remote_user: root
 
   - name: Enable Docker CE service at startup
     service:
       name: docker
       state: started
       enabled: yes
+    become: yes
+    remote_user: root
 
   - name: Download pip
     shell: "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py"
 
   - name: Install pip
     shell: "python get-pip.py"
+    become: yes
+    remote_user: root
 
   - name: Docker Pip
     shell: pip install docker
+    become: yes
+    remote_user: root
 
     #Fazendo o Pull na maquina de destino
   - name: Docker Pull Application
     docker_image:
       name: ewertonely/laravel-blog:latest
       source: pull
+    become: yes
+    remote_user: root
 
     #Iniciando a nova versão da aplicação
   - name: Start Application 
@@ -40,6 +52,8 @@
       recreate: yes
       published_ports:
         - 80:80
+    become: yes
+    remote_user: root
 
   - name: Waiting Aplication Starting Up
     uri:
